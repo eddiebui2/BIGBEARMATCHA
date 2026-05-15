@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Bear Matcha – Sip Something Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green-deep: #1a3a2a;
+    --green-mid: #2d5a3d;
+    --green-light: #4a8c5c;
+    --green-pale: #c8dfc0;
+    --green-whisper: #eef5e8;
+    --cream: #f5f0e8;
+    --cream-dark: #e0d8c8;
+    --matcha: #6b8f3a;
+    --matcha-dark: #4a6428;
+    --text-dark: #1a2a1a;
+    --text-mid: #3d5c3d;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245,240,232,0.93);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green-deep); }
+  .nav-logo span { color: var(--matcha); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.85rem; font-weight: 400; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.07em; transition: color .2s; }
+  .nav-links a:hover { color: var(--green-deep); }
+  .nav-cta { background: var(--green-deep) !important; color: var(--cream) !important; padding: .45rem 1.4rem; border-radius: 50px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 5rem; position: relative; overflow: hidden;
+  }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 3rem 5rem 5rem; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-size: .78rem; font-weight: 500; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--matcha); margin-bottom: 1.5rem;
+  }
+  .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--matcha); display: inline-block; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5vw,5rem); font-weight: 900; line-height: 1.0; color: var(--green-deep); letter-spacing: -.03em; margin-bottom: 1.5rem; }
+  .hero-title em { font-style: italic; color: var(--matcha); }
+  .hero-desc { font-size: 1rem; color: var(--text-mid); line-height: 1.85; max-width: 420px; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--green-deep); color: var(--cream); border: none; padding: .95rem 2.2rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, transform .15s; }
+  .btn-primary:hover { background: var(--matcha); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--green-deep); border: 1.5px solid var(--green-pale); padding: .95rem 2rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: border-color .2s, background .2s; }
+  .btn-outline:hover { border-color: var(--green-light); background: var(--green-whisper); }
+
+  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-circle {
+    position: absolute; width: 520px; height: 520px; border-radius: 50%;
+    background: var(--green-mid); top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+  .cup-svg { position: relative; z-index: 2; }
+
+  .float-badge {
+    position: absolute; background: white; border-radius: 14px;
+    padding: .75rem 1.1rem; z-index: 10;
+    box-shadow: 0 8px 28px rgba(26,58,42,.18);
+    animation: floatUp 3s ease-in-out infinite;
+  }
+  .float-badge:nth-of-type(2) { animation-delay: -1.5s; }
+  @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .fb1 { top: 18%; left: -6%; display: flex; align-items: center; gap: .7rem; }
+  .fb2 { bottom: 22%; right: -6%; text-align: center; }
+  .fb-icon { width: 38px; height: 38px; background: var(--green-whisper); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+  .fb-label { font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); }
+  .fb-value { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-deep); }
+
+  /* MENU */
+  .section { padding: 6rem 5rem; }
+  .section-center { text-align: center; margin-bottom: 3.5rem; }
+  .section-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--matcha); margin-bottom: .8rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 700; color: var(--green-deep); line-height: 1.2; }
+
+  .menu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .menu-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--cream-dark); transition: transform .3s; }
+  .menu-card:hover { transform: translateY(-6px); }
+  .menu-img { height: 190px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+  .menu-card:nth-child(1) .menu-img { background: var(--green-whisper); }
+  .menu-card:nth-child(2) .menu-img { background: #e5f0e2; }
+  .menu-card:nth-child(3) .menu-img { background: var(--cream); }
+  .menu-body { padding: 1.5rem; }
+  .menu-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); margin-bottom: .5rem; }
+  .menu-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; font-weight: 300; }
+  .menu-foot { display: flex; justify-content: space-between; align-items: center; }
+  .menu-price { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--matcha); }
+  .menu-tag { font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--matcha-dark); background: var(--green-whisper); padding: 4px 12px; border-radius: 50px; }
+
+  /* VALUES */
+  .values { background: var(--green-deep); padding: 6rem 5rem; }
+  .values-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3rem; }
+  .val { text-align: center; }
+  .val-icon { width: 58px; height: 58px; background: rgba(255,255,255,.08); border-radius: 16px; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; }
+  .val-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--cream); margin-bottom: .5rem; }
+  .val-desc { font-size: .85rem; color: var(--green-pale); line-height: 1.7; font-weight: 300; }
+  .val-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--green-pale); margin-bottom: .8rem; }
+
+  /* STORY */
+  .story { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 6rem 5rem; background: white; }
+  .story-viz { position: relative; height: 420px; }
+  .s-block { border-radius: 20px; position: absolute; display: flex; align-items: center; justify-content: center; }
+  .s-main { background: var(--green-mid); width: 72%; height: 72%; top: 0; left: 0; font-size: 4.5rem; }
+  .s-accent { background: var(--cream-dark); width: 52%; height: 48%; bottom: 0; right: 0; font-size: 3rem; }
+  .story-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--matcha); margin-bottom: .8rem; }
+  .story-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--green-deep); line-height: 1.15; margin-bottom: 1.5rem; }
+  .story-title em { color: var(--matcha); font-style: italic; }
+  .story-p { font-size: .98rem; color: var(--text-mid); line-height: 1.9; font-weight: 300; margin-bottom: 1rem; }
+  .stats { display: flex; gap: 2.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--cream-dark); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: var(--green-deep); }
+  .stat-lbl { font-size: .78rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; font-weight: 400; }
+
+  /* CTA */
+  .cta { background: var(--matcha); padding: 5rem; text-align: center; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; color: white; margin-bottom: .8rem; }
+  .cta-sub { color: rgba(255,255,255,.8); font-size: .98rem; margin-bottom: 2rem; font-weight: 300; }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-light { background: white; color: var(--matcha-dark); border: none; padding: .95rem 2.4rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'DM Sans',sans-serif; cursor: pointer; transition: transform .15s; }
+  .cta-light:hover { transform: translateY(-2px); }
+  .cta-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,.5); padding: .95rem 2.2rem; border-radius: 50px; font-size: .95rem; font-weight: 400; font-family: 'DM Sans',sans-serif; cursor: pointer; transition: border-color .2s, background .2s; }
+  .cta-ghost:hover { border-color: white; background: rgba(255,255,255,.1); }
+
+  /* FOOTER */
+  footer { background: var(--green-deep); color: var(--green-pale); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; }
+  .ft-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); }
+  .ft-logo span { color: var(--green-pale); }
+  .ft-links { display: flex; gap: 2rem; list-style: none; }
+  .ft-links a { text-decoration: none; font-size: .82rem; color: var(--green-pale); font-weight: 300; transition: color .2s; }
+  .ft-links a:hover { color: var(--cream); }
+  .ft-copy { font-size: .78rem; color: rgba(200,223,192,.45); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Big Bear <span>Matcha</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Our Story</a></li>
+    <li><a href="#">Locations</a></li>
+    <li><a href="#" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Ceremonial grade matcha</div>
+    <h1 class="hero-title">Sip Something<br><em>Wild</em> &<br>Wonderful</h1>
+    <p class="hero-desc">Handcrafted matcha drinks made with love, good leaves, and just the right amount of bear energy. Cozy café vibes, every single cup.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">See Our Menu</button>
+      <button class="btn-outline">Find a Location</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-circle"></div>
+
+    <div class="float-badge fb1">
+      <div class="fb-icon">🍵</div>
+      <div>
+        <div class="fb-label">Daily Special</div>
+        <div class="fb-value">Honey Latte</div>
+      </div>
+    </div>
+
+    <div class="float-badge fb2">
+      <div class="fb-label">Average Rating</div>
+      <div class="fb-value">⭐ 4.9</div>
+    </div>
+
+    <svg class="cup-svg" width="260" height="340" viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 100 L40 298 Q40 318 62 318 L198 318 Q220 318 220 298 L200 100 Z" fill="#f5f0e8" stroke="#c8dfc0" stroke-width="2"/>
+      <ellipse cx="130" cy="108" rx="66" ry="18" fill="#4a8c5c" opacity="0.95"/>
+      <ellipse cx="130" cy="110" rx="55" ry="12" fill="#c8e8b0" opacity="0.75"/>
+      <path d="M98 106 Q118 116 140 106 Q158 116 174 106" stroke="#a0d080" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M78 145 Q84 133 90 145" stroke="rgba(255,255,255,0.55)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M220 160 Q262 160 262 200 Q262 240 220 240" stroke="#c8dfc0" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="130" cy="318" rx="90" ry="13" fill="#e0d8c8"/>
+      <ellipse cx="130" cy="314" rx="80" ry="9" fill="#ece4d4"/>
+      <path d="M100 78 Q106 58 100 38" stroke="#c8dfc0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+      <path d="M130 68 Q136 48 130 28" stroke="#c8dfc0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+      <path d="M160 78 Q166 58 160 38" stroke="#c8dfc0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+      <circle cx="130" cy="210" r="36" fill="#4a6428" opacity="0.1"/>
+      <circle cx="117" cy="202" r="5" fill="#4a6428" opacity="0.22"/>
+      <circle cx="143" cy="202" r="5" fill="#4a6428" opacity="0.22"/>
+      <path d="M118 220 Q130 230 142 220" stroke="#4a6428" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.28"/>
+      <circle cx="109" cy="195" r="9" fill="#4a6428" opacity="0.1"/>
+      <circle cx="151" cy="195" r="9" fill="#4a6428" opacity="0.1"/>
+    </svg>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section">
+  <div class="section-center">
+    <p class="section-eye">What's Brewing</p>
+    <h2 class="section-title">Our Fan Favourites</h2>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-img">🍵</div>
+      <div class="menu-body">
+        <div class="menu-name">Classic Matcha Latte</div>
+        <p class="menu-desc">Ceremonial grade matcha whisked smooth with steamed oat milk. Pure, earthy, and deeply satisfying.</p>
+        <div class="menu-foot">
+          <span class="menu-price">$6.50</span>
+          <span class="menu-tag">Bestseller</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-img">🐻</div>
+      <div class="menu-body">
+        <div class="menu-name">Big Bear Honey Latte</div>
+        <p class="menu-desc">Our signature drink. Matcha with raw wildflower honey, vanilla, and a cloud of oat cream on top.</p>
+        <div class="menu-foot">
+          <span class="menu-price">$7.50</span>
+          <span class="menu-tag">Signature</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-img">🧋</div>
+      <div class="menu-body">
+        <div class="menu-name">Matcha Cold Brew</div>
+        <p class="menu-desc">Slow-steeped cold brew layered with ceremonial matcha and brown sugar oat milk. Wildly refreshing.</p>
+        <div class="menu-foot">
+          <span class="menu-price">$7.00</span>
+          <span class="menu-tag">Seasonal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="section-center">
+    <p class="val-eye">Why Bear?</p>
+    <h2 class="section-title" style="color: var(--cream);">The Big Bear Way</h2>
+  </div>
+  <div class="values-grid">
+    <div class="val">
+      <div class="val-icon">🌿</div>
+      <div class="val-title">Sourced with Care</div>
+      <p class="val-desc">Every gram of matcha comes from small family farms in Uji, Japan — first-flush, shade-grown, and stone-ground.</p>
+    </div>
+    <div class="val">
+      <div class="val-icon">☀️</div>
+      <div class="val-title">Made Fresh Daily</div>
+      <p class="val-desc">We prep everything in-house each morning. No syrups, no shortcuts, no funny business.</p>
+    </div>
+    <div class="val">
+      <div class="val-icon">🐝</div>
+      <div class="val-title">Local & Seasonal</div>
+      <p class="val-desc">Our honey and dairy alternatives are sourced from Alberta producers we personally know and trust.</p>
+    </div>
+    <div class="val">
+      <div class="val-icon">💚</div>
+      <div class="val-title">Planet Friendly</div>
+      <p class="val-desc">Compostable cups, reusable lids, and a bring-your-own cup discount — every single day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-viz">
+    <div class="s-block s-main">🍵</div>
+    <div class="s-block s-accent">🐻</div>
+  </div>
+  <div>
+    <p class="story-eye">Our Story</p>
+    <h2 class="story-title">Born from a <em>love</em> of good mornings</h2>
+    <p class="story-p">Big Bear Matcha started as a tiny pop-up in Edmonton with one matcha bowl and a big dream. We wanted to make ceremonial-grade matcha approachable, fun, and just a little bit wild.</p>
+    <p class="story-p">Today we're a full neighbourhood café — but the mission is the same: brew something worth waking up for, every single day.</p>
+    <div class="stats">
+      <div>
+        <div class="stat-num">10K+</div>
+        <div class="stat-lbl">Cups served</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-lbl">Edmonton locations</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">Ceremonial grade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2 class="cta-title">Ready for Your Daily Matcha Fix?</h2>
+  <p class="cta-sub">Find us in Edmonton — or order online for local delivery.</p>
+  <div class="cta-row">
+    <button class="cta-light">Order Online</button>
+    <button class="cta-ghost">Find a Location</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">Big Bear <span>Matcha</span></div>
+  <ul class="ft-links">
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Locations</a></li>
+    <li><a href="#">Instagram</a></li>
+  </ul>
+  <div class="ft-copy">© 2026 Big Bear Matcha. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
