@@ -4,8 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Big Bear Matcha – Sip Something Wild</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Rundeck Rough';
+    src: url('Rundeck Rough.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --green-deep: #1a3a2a;
@@ -20,7 +25,7 @@
     --text-dark: #1a2a1a;
     --text-mid: #3d5c3d;
   }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+  body { font-family: 'Rundeck Rough', serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
 
   /* NAV */
   nav {
@@ -31,7 +36,7 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--cream-dark);
   }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green-deep); }
+  .nav-logo { font-family: 'Rundeck Rough', serif; font-size: 1.4rem; font-weight: 700; color: var(--green-deep); }
   .nav-logo span { color: var(--matcha); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { text-decoration: none; font-size: 0.85rem; font-weight: 400; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.07em; transition: color .2s; }
@@ -50,13 +55,13 @@
     text-transform: uppercase; color: var(--matcha); margin-bottom: 1.5rem;
   }
   .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--matcha); display: inline-block; }
-  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5vw,5rem); font-weight: 900; line-height: 1.0; color: var(--green-deep); letter-spacing: -.03em; margin-bottom: 1.5rem; }
+  .hero-title { font-family: 'Rundeck Rough', serif; font-size: clamp(2.8rem,5vw,5rem); font-weight: 900; line-height: 1.0; color: var(--green-deep); letter-spacing: -.03em; margin-bottom: 1.5rem; }
   .hero-title em { font-style: italic; color: var(--matcha); }
   .hero-desc { font-size: 1rem; color: var(--text-mid); line-height: 1.85; max-width: 420px; margin-bottom: 2.5rem; font-weight: 300; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { background: var(--green-deep); color: var(--cream); border: none; padding: .95rem 2.2rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, transform .15s; }
+  .btn-primary { background: var(--green-deep); color: var(--cream); border: none; padding: .95rem 2.2rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'Rundeck Rough', serif; cursor: pointer; transition: background .2s, transform .15s; }
   .btn-primary:hover { background: var(--matcha); transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--green-deep); border: 1.5px solid var(--green-pale); padding: .95rem 2rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: border-color .2s, background .2s; }
+  .btn-outline { background: transparent; color: var(--green-deep); border: 1.5px solid var(--green-pale); padding: .95rem 2rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'Rundeck Rough', serif; cursor: pointer; transition: border-color .2s, background .2s; }
   .btn-outline:hover { border-color: var(--green-light); background: var(--green-whisper); }
 
   .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -78,13 +83,13 @@
   .fb2 { bottom: 22%; right: -6%; text-align: center; }
   .fb-icon { width: 38px; height: 38px; background: var(--green-whisper); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
   .fb-label { font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mid); }
-  .fb-value { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-deep); }
+  .fb-value { font-family: 'Rundeck Rough', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-deep); }
 
   /* MENU */
   .section { padding: 6rem 5rem; }
   .section-center { text-align: center; margin-bottom: 3.5rem; }
   .section-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--matcha); margin-bottom: .8rem; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 700; color: var(--green-deep); line-height: 1.2; }
+  .section-title { font-family: 'Rundeck Rough', serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 700; color: var(--green-deep); line-height: 1.2; }
 
   .menu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
   .menu-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--cream-dark); transition: transform .3s; }
@@ -94,10 +99,10 @@
   .menu-card:nth-child(2) .menu-img { background: #e5f0e2; }
   .menu-card:nth-child(3) .menu-img { background: var(--cream); }
   .menu-body { padding: 1.5rem; }
-  .menu-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); margin-bottom: .5rem; }
+  .menu-name { font-family: 'Rundeck Rough', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); margin-bottom: .5rem; }
   .menu-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; font-weight: 300; }
   .menu-foot { display: flex; justify-content: space-between; align-items: center; }
-  .menu-price { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--matcha); }
+  .menu-price { font-family: 'Rundeck Rough', serif; font-size: 1.35rem; font-weight: 700; color: var(--matcha); }
   .menu-tag { font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--matcha-dark); background: var(--green-whisper); padding: 4px 12px; border-radius: 50px; }
 
   /* VALUES */
@@ -105,7 +110,7 @@
   .values-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3rem; }
   .val { text-align: center; }
   .val-icon { width: 58px; height: 58px; background: rgba(255,255,255,.08); border-radius: 16px; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; }
-  .val-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--cream); margin-bottom: .5rem; }
+  .val-title { font-family: 'Rundeck Rough', serif; font-size: 1.05rem; font-weight: 700; color: var(--cream); margin-bottom: .5rem; }
   .val-desc { font-size: .85rem; color: var(--green-pale); line-height: 1.7; font-weight: 300; }
   .val-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--green-pale); margin-bottom: .8rem; }
 
@@ -116,26 +121,26 @@
   .s-main { background: var(--green-mid); width: 72%; height: 72%; top: 0; left: 0; font-size: 4.5rem; }
   .s-accent { background: var(--cream-dark); width: 52%; height: 48%; bottom: 0; right: 0; font-size: 3rem; }
   .story-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--matcha); margin-bottom: .8rem; }
-  .story-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--green-deep); line-height: 1.15; margin-bottom: 1.5rem; }
+  .story-title { font-family: 'Rundeck Rough', serif; font-size: 2.4rem; font-weight: 700; color: var(--green-deep); line-height: 1.15; margin-bottom: 1.5rem; }
   .story-title em { color: var(--matcha); font-style: italic; }
   .story-p { font-size: .98rem; color: var(--text-mid); line-height: 1.9; font-weight: 300; margin-bottom: 1rem; }
   .stats { display: flex; gap: 2.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--cream-dark); }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: var(--green-deep); }
+  .stat-num { font-family: 'Rundeck Rough', serif; font-size: 1.9rem; font-weight: 900; color: var(--green-deep); }
   .stat-lbl { font-size: .78rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; font-weight: 400; }
 
   /* CTA */
   .cta { background: var(--matcha); padding: 5rem; text-align: center; }
-  .cta-title { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; color: white; margin-bottom: .8rem; }
+  .cta-title { font-family: 'Rundeck Rough', serif; font-size: 2.6rem; font-weight: 900; color: white; margin-bottom: .8rem; }
   .cta-sub { color: rgba(255,255,255,.8); font-size: .98rem; margin-bottom: 2rem; font-weight: 300; }
   .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .cta-light { background: white; color: var(--matcha-dark); border: none; padding: .95rem 2.4rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'DM Sans',sans-serif; cursor: pointer; transition: transform .15s; }
+  .cta-light { background: white; color: var(--matcha-dark); border: none; padding: .95rem 2.4rem; border-radius: 50px; font-size: .95rem; font-weight: 500; font-family: 'Rundeck Rough', serif; cursor: pointer; transition: transform .15s; }
   .cta-light:hover { transform: translateY(-2px); }
-  .cta-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,.5); padding: .95rem 2.2rem; border-radius: 50px; font-size: .95rem; font-weight: 400; font-family: 'DM Sans',sans-serif; cursor: pointer; transition: border-color .2s, background .2s; }
+  .cta-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,.5); padding: .95rem 2.2rem; border-radius: 50px; font-size: .95rem; font-weight: 400; font-family: 'Rundeck Rough', serif; cursor: pointer; transition: border-color .2s, background .2s; }
   .cta-ghost:hover { border-color: white; background: rgba(255,255,255,.1); }
 
   /* FOOTER */
   footer { background: var(--green-deep); color: var(--green-pale); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; }
-  .ft-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); }
+  .ft-logo { font-family: 'Rundeck Rough', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); }
   .ft-logo span { color: var(--green-pale); }
   .ft-links { display: flex; gap: 2rem; list-style: none; }
   .ft-links a { text-decoration: none; font-size: .82rem; color: var(--green-pale); font-weight: 300; transition: color .2s; }
