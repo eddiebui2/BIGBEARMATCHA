@@ -65,10 +65,7 @@
   .btn-outline:hover { border-color: var(--green-light); background: var(--green-whisper); }
 
   .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .hero-circle {
-    position: absolute; width: 520px; height: 520px; border-radius: 50%;
-    background: var(--green-mid); top: 50%; left: 50%; transform: translate(-50%,-50%);
-  }
+  .hero-circle { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--green-mid); top: 50%; left: 50%; transform: translate(-50%,-50%); }
   .cup-svg { position: relative; z-index: 2; }
 
   .float-badge {
@@ -91,19 +88,28 @@
   .section-eye { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--matcha); margin-bottom: .8rem; }
   .section-title { font-family: 'Rundeck Rough', serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 700; color: var(--green-deep); line-height: 1.2; }
 
-  .menu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .menu-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
   .menu-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--cream-dark); transition: transform .3s; }
   .menu-card:hover { transform: translateY(-6px); }
-  .menu-img { height: 190px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-  .menu-card:nth-child(1) .menu-img { background: var(--green-whisper); }
-  .menu-card:nth-child(2) .menu-img { background: #e5f0e2; }
-  .menu-card:nth-child(3) .menu-img { background: var(--cream); }
-  .menu-body { padding: 1.5rem; }
-  .menu-name { font-family: 'Rundeck Rough', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); margin-bottom: .5rem; }
-  .menu-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; font-weight: 300; }
+  .menu-img {
+    height: 220px;
+    overflow: hidden;
+    background: var(--green-whisper);
+  }
+  .menu-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+  }
+  .menu-card:hover .menu-img img { transform: scale(1.05); }
+  .menu-body { padding: 1.4rem; }
+  .menu-name { font-family: 'Rundeck Rough', serif; font-size: 1.15rem; font-weight: 700; color: var(--green-deep); margin-bottom: .5rem; }
+  .menu-desc { font-size: .85rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; font-weight: 300; }
   .menu-foot { display: flex; justify-content: space-between; align-items: center; }
-  .menu-price { font-family: 'Rundeck Rough', serif; font-size: 1.35rem; font-weight: 700; color: var(--matcha); }
-  .menu-tag { font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--matcha-dark); background: var(--green-whisper); padding: 4px 12px; border-radius: 50px; }
+  .menu-price { font-family: 'Rundeck Rough', serif; font-size: 1.3rem; font-weight: 700; color: var(--matcha); }
+  .menu-tag { font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--matcha-dark); background: var(--green-whisper); padding: 4px 12px; border-radius: 50px; }
 
   /* VALUES */
   .values { background: var(--green-deep); padding: 6rem 5rem; }
@@ -153,9 +159,9 @@
 <nav>
   <div class="nav-logo">Big Bear <span>Matcha</span></div>
   <ul class="nav-links">
-    <li><a href="#">Menu</a></li>
-    <li><a href="#">Our Story</a></li>
-    <li><a href="#">Locations</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="locations.html">Locations</a></li>
     <li><a href="#" class="nav-cta">Order Now</a></li>
   </ul>
 </nav>
@@ -167,13 +173,12 @@
     <h1 class="hero-title">Sip Something<br><em>Wild</em> &<br>Wonderful</h1>
     <p class="hero-desc">Handcrafted matcha drinks made with love, good leaves, and just the right amount of bear energy. Cozy café vibes, every single cup.</p>
     <div class="hero-actions">
-      <button class="btn-primary">See Our Menu</button>
-      <button class="btn-outline">Find a Location</button>
+      <button class="btn-primary" onclick="window.location.href='menu.html'">See Our Menu</button>
+      <button class="btn-outline" onclick="window.location.href='locations.html'">Find a Location</button>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-circle"></div>
-
     <div class="float-badge fb1">
       <div class="fb-icon">🍵</div>
       <div>
@@ -181,12 +186,10 @@
         <div class="fb-value">Honey Latte</div>
       </div>
     </div>
-
     <div class="float-badge fb2">
       <div class="fb-label">Average Rating</div>
       <div class="fb-value">⭐ 4.9</div>
     </div>
-
     <svg class="cup-svg" width="260" height="340" viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M60 100 L40 298 Q40 318 62 318 L198 318 Q220 318 220 298 L200 100 Z" fill="#f5f0e8" stroke="#c8dfc0" stroke-width="2"/>
       <ellipse cx="130" cy="108" rx="66" ry="18" fill="#4a8c5c" opacity="0.95"/>
@@ -216,8 +219,11 @@
     <h2 class="section-title">Our Fan Favourites</h2>
   </div>
   <div class="menu-grid">
+
     <div class="menu-card">
-      <div class="menu-img">🍵</div>
+      <div class="menu-img">
+        <img src="images/classic.jpg" alt="Classic Matcha Latte">
+      </div>
       <div class="menu-body">
         <div class="menu-name">Classic Matcha Latte</div>
         <p class="menu-desc">Ceremonial grade matcha whisked smooth with steamed oat milk. Pure, earthy, and deeply satisfying.</p>
@@ -227,8 +233,11 @@
         </div>
       </div>
     </div>
+
     <div class="menu-card">
-      <div class="menu-img">🐻</div>
+      <div class="menu-img">
+        <img src="images/strawberry.jpg" alt="Strawberry Shortcake">
+      </div>
       <div class="menu-body">
         <div class="menu-name">Strawberry Shortcake</div>
         <p class="menu-desc">...</p>
@@ -238,30 +247,36 @@
         </div>
       </div>
     </div>
+
     <div class="menu-card">
-      <div class="menu-img">🧋</div>
+      <div class="menu-img">
+        <img src="images/kinako.jpg" alt="Roasted Kinako">
+      </div>
       <div class="menu-body">
         <div class="menu-name">Roasted Kinako</div>
         <p class="menu-desc">...</p>
         <div class="menu-foot">
-          <span class="menu-price">$8.5</span>
+          <span class="menu-price">$8.50</span>
           <span class="menu-tag">Signature</span>
         </div>
       </div>
     </div>
-  </div class="menu-card">
-      <div class="menu-img"></div>
+
+    <div class="menu-card">
+      <div class="menu-img">
+        <img src="images/bumble berry.jpg" alt="Bumble Berry Biscuit">
+      </div>
       <div class="menu-body">
         <div class="menu-name">Bumble Berry Biscuit</div>
         <p class="menu-desc">...</p>
         <div class="menu-foot">
-          <span class="menu-price">$8.5</span>
-          <span class="menu-tag">Seasonal</span> 
-         </div>
+          <span class="menu-price">$8.50</span>
+          <span class="menu-tag">Seasonal</span>
+        </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </section>
 
 <!-- VALUES -->
@@ -312,7 +327,7 @@
       </div>
       <div>
         <div class="stat-num">1</div>
-        <div class="stat-lbl">Edmonton locations</div>
+        <div class="stat-lbl">Edmonton location</div>
       </div>
       <div>
         <div class="stat-num">100%</div>
@@ -328,7 +343,7 @@
   <p class="cta-sub">Find us in Edmonton — or order online for local delivery.</p>
   <div class="cta-row">
     <button class="cta-light">Order Online</button>
-    <button class="cta-ghost">Find a Location</button>
+    <button class="cta-ghost" onclick="window.location.href='locations.html'">Find a Location</button>
   </div>
 </section>
 
@@ -336,9 +351,9 @@
 <footer>
   <div class="ft-logo">Big Bear <span>Matcha</span></div>
   <ul class="ft-links">
-    <li><a href="#">Menu</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Locations</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="story.html">About</a></li>
+    <li><a href="locations.html">Locations</a></li>
     <li><a href="#">Instagram</a></li>
   </ul>
   <div class="ft-copy">© 2026 Big Bear Matcha. All rights reserved.</div>
